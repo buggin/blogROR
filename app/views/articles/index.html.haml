@@ -1,13 +1,18 @@
 %h1 Listing articles
  
-%table
+%table.table
   %tr
     %th Author
     %th Title
     %th Text
+    %th 
+      %span.glyphicon.glyphicon-pencil
  
     - @articles.each_with_index do |article, index| 
       %tr
         %td= article.author.name
-        %td= article.title
+        %td= link_to article.title, article_path(article)
         %td= article.body
+        %td= link_to 'Add Comment', new_article_comment_path(article)
+ 
+= link_to 'New Article', new_article_path, class: 'btn btn-primary'

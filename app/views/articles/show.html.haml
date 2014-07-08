@@ -1,3 +1,4 @@
+%h1 Article:
 %p
 	%strong Author:
 	= @article.author.name 
@@ -9,3 +10,10 @@
 %p
 	%strong Text:
 	= @article.body
+
+%p
+	%h1 Comments:
+	- @comments.each_with_index do |comment, index| 
+		%h5= "#{index+1}.- " + comment.title
+		.container= comment.body
+	
